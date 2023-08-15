@@ -1,0 +1,49 @@
+.container{
+    width: 500px;
+    height: 200px;
+    display: flex;
+}
+
+.box{
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+    border-radius: 3px;
+    color: aliceblue;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.pink {
+    background-color: hotpink;
+}
+
+#relative-box{
+    position: relative;
+    left: 15px;
+    bottom: 25px;
+}
+
+#container-sticky{
+    border: 3px solid black;
+}
+
+#fixed-box{
+    position: fixed;
+    left: 200px;
+    top: 50px;
+}
+
+#absolute-box{
+    position: absolute;
+    top: 10px;
+    left: 90px;
+}
+
+#sticky-box{
+    position: sticky;
+    top: 10px;
+}
+
