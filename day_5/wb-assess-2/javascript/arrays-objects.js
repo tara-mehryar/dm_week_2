@@ -4,16 +4,17 @@
 // - an array of strings: 'apple', 'berry', 'cherry'
 // - the boolean value true
 function myArr() {
-  // Replace this with your code
+ return [4, 'abc', ['apple', 'berry', 'cherry'], true];
 }
+console.log(myArr())
 
 // The following array, `nestedLetters`, contains many levels of nested arrays.
 // Return the letter 'z' from `nestedLetters` using bracket notation.
 function getZ() {
   const nestedLetters = ['m', 'g', 'e', 'q', 'h', ['n', 'b', ['v', 'z', 'y', 'r']], 'a'];
-
-  // Replace this with your code
+return nestedLetters[5][2][1]
 }
+console.log(getZ())
 
 // Use the spread operator to combine the following arrays into one array and return it.
 function flatAnimals() {
@@ -22,16 +23,20 @@ function flatAnimals() {
   const savannah = ['lion', 'zebra', 'lion', 'giraffe'];
   const desert = ['rattlesnake', 'coyote'];
 
-  // Replace this with your code
+  const combinedArr = [...forest, ...ocean, ...savannah, ...desert];
+  return combinedArr;
 }
+console.log(flatAnimals())
 
 // Now use the spread operator to return a copy of the animals array with 'elephant' at
 // the end.
 function animalsWithElephant() {
   const animals = ['aardvark', 'bear', 'cat'];
 
-  // Replace this with your code
+  const animalsCopy = [...animals, 'elephant'];
+  return animalsCopy;
 }
+console.log(animalsWithElephant())
 
 // You don't agree with the rating for Splendor,
 // delete the rating property off of the gameInfo object.
@@ -44,11 +49,10 @@ function improveGameRating() {
     minAge: 10,
     rating: 1,
   };
-
-  // Replace this with your code
-
+  delete gameInfo.rating;
   return gameInfo;
 }
+console.log(improveGameRating())
 
 // You only like even numbers, so get rid of the other shapes by
 // looping over the shapes object and deleting any property whose value is odd number.
@@ -63,10 +67,15 @@ function evenShapes() {
     octagon: 8,
   };
 
-  // Replace this with your code
+for (const shape in shapes){
+  if (shapes[shape] % 2 !== 0){
+    delete shapes[shape]
+  }
+}
 
   return shapes;
 }
+console.log(evenShapes())
 
 // Write a for loop that loops over the courses array,
 // nest a for in loop to loop over each object.
@@ -100,10 +109,18 @@ function betterCourses() {
     },
   ];
 
-  // Replace this with your code
+for (let i = 0; i < courses.length; i++){
+  const course = courses[i];
+  for (const property in course){
+    if (course[property] === true){
+      course[property] = false;
+    }
+  }
+}
 
   return courses;
 }
+console.log(betterCourses())
 
 // Use nested for loops to compare the letters in the lettersToPair array below.
 // When you find a pair, push the indexes of the letters into the pairsArray as an array.
@@ -115,10 +132,19 @@ function findPairs() {
   const lettersToPair = ['e', 'k', 's', 'a', 'e', 's', 'a', 'n', 'k', 'n'];
   const pairsArray = [];
 
-  // Replace this with your code
+  for (let i = 0; i < lettersToPair.length; i++){
+    for (let j = i + 1; j < lettersToPair.length; j++){
+      if (lettersToPair[i] === lettersToPair[j]){
+        pairsArray.push([i, j]);
+        break; 
+      }
+    }
+  }
 
   return pairsArray;
 }
+
+console.log(findPairs())
 
 // For these problems we will be using the objects below, contactInfo and shippingInfo,
 // as well as objects that you will make based off these two.
@@ -139,19 +165,25 @@ const shippingInfo = {
 // Using the Object.assign method, create a new object that combines the contactInfo and
 // shippingInfo objects and return it.
 function getHelensInfo() {
-  // Replace this with your code
+  const helensInfo = Object.assign({}, contactInfo, shippingInfo);
+  return helensInfo;
 }
+console.log(getHelensInfo())
 
 // Return Helen's email using destructuring.
 function getHelensEmail() {
-  // Replace this with your code
+ const {email} = contactInfo;
+ return email;
 }
+console.log(getHelensEmail())
 
 // Use destructuring to save the zip code and state
 // from shippingInfo to new variables and return [zipCode, state]
 function getZipAndState() {
-  // Replace this with your code
+  const {zipCode, state} = shippingInfo;
+  return [zipCode, state];
 }
+console.log(getZipAndState())
 
 // Helen has a daughter named Ellen that lives at the same address.
 // Return an object with Helen's info in it using the spread operator on the
@@ -159,8 +191,15 @@ function getZipAndState() {
 // and the email address to 'ellen@email.com'.
 // Return the new object.
 function getEllensInfo() {
-  // Replace this with your code
+  const ellensInfo = {
+    ...contactInfo,
+    ...shippingInfo,
+    name: 'Ellen',
+    email: 'ellen@email.com'
+  }
+  return ellensInfo;
 }
+console.log(getEllensInfo())
 
 // Use the userInfo object below to complete problems 9-11.
 const userInfo = {
@@ -212,20 +251,24 @@ const userInfo = {
 
 // Return the value of alerts in gn@rly_c0der_007's settings using dot notation.
 function shouldAlert() {
-  // Replace this with your code
+  return userInfo.settings.alerts;
 }
+console.log(shouldAlert())
 
 // Return the last item in gn@rly_c0der_007's topics array
 // using dot and/or bracket notation.
 function lastTopic() {
-  // Replace this with your code
+  const topicsArr = userInfo.topics;
+  return topicsArr[topicsArr.length - 1];
 }
+console.log(lastTopic());
 
 // Return the userId of the first response to
 // gn@rly_c0der_007's 2nd comment using dot/bracket notation.
 function firstResponseId() {
-  // Replace this with your code
+  return userInfo.comments[1].responses[0].userId;
 }
+console.log(firstResponseId())
 
 export {
   animalsWithElephant,
